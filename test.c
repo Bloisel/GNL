@@ -90,6 +90,26 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (dup);
 }
 
+void ft_get_line(int fd,char *fichier)
+{
+	char *string;
+	int i;
+
+	i = -1;	
+	//if (fd <= 0 || BUFFER_SIZE <= 0)
+		//return ;
+
+	//if (!fichier)
+		//return ;	
+	string = malloc(sizeof(char) * (ft_strlen(fichier) + 1));
+	
+	while (fichier[++i] != '\n') 
+		string[i] = fichier[i];
+	
+	string[i] = '\0';
+    printf("%s\n",string);
+}
+
 void get_one_line(int fd)
 {
 	char *str;
@@ -103,7 +123,7 @@ void get_one_line(int fd)
 	fichier = malloc(sizeof(char) * 10000);
 	while ( read_one > 0 && !ft_strchr(fichier, '\n'))
 	{
-		printf("%s\n", fichier);
+		//printf("%s\n", fichier);
 		str=malloc(sizeof(char) * BUFFER_SIZE + 1);
 		read_one = read(fd, str, BUFFER_SIZE);
 		str[read_one] = '\0';
@@ -112,27 +132,8 @@ void get_one_line(int fd)
 		if (read_one == -1)
 			printf ("Error");
 	}
+	ft_get_line(fd, fichier);
 	printf("%s\n",fichier);
-}
-
-void	get_line(int fd)
-{
-	char buf[30];
-	int nb_read;
-	int count;
-	//if fd <= 0 || BUFFER_SIZE <= 0
-		//return (0);
-    
-	nb_read = -1;
-
-	nb_read = read(fd, buf, 30);
-    if (nb_read == -1)
-        {
-        	printf ("Error\n");
-			return ;
-        }
-    buf[nb_read] = '\0';
-    printf("%s",buf);
 }
 
 int main(void)
