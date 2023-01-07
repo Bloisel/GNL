@@ -1,4 +1,15 @@
-#include"get_next_line.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bloisel <bloisel@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/07 10:04:10 by bloisel           #+#    #+#             */
+/*   Updated: 2023/01/07 10:34:12 by bloisel          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+#include "get_next_line.h"
 
 size_t	ft_strlen(const char *str)
 {
@@ -11,7 +22,6 @@ size_t	ft_strlen(const char *str)
 	}
 	return (i);
 }
-
 
 size_t	ft_strlen_n(const char *str)
 {
@@ -31,7 +41,7 @@ char	*ft_strchr(const char *s, int c)
 
 	i = -1;
 	if (!s)
-		return(NULL);
+		return (NULL);
 	while (c >= 256)
 		c -= 256;
 	while (s[++i])
@@ -52,10 +62,10 @@ char	*ft_strjoin(char *s1, char *s2)
 	{
 		s1 = malloc(1);
 		s1[0] = '\0';
-	} 
+	}
 	if (!s1 || !s2)
-		return NULL;
-	dup = malloc(sizeof(char )  * (ft_strlen(s1) + ft_strlen(s2) + 1));
+		return (NULL);
+	dup = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!dup)
 		return (NULL);
 	i = -1;
